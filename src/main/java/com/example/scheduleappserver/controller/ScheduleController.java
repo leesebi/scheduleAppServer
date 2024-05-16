@@ -69,8 +69,18 @@ public class ScheduleController {
         ScheduleResponseDto responseDto = new ScheduleResponseDto(schedule);
 
         return responseDto;
-
     }
 
+    @DeleteMapping("/scheduledelete/{id}")
+    public List<ScheduleResponseDto> deleteSchedule(@PathVariable Long id){
+        List<ScheduleResponseDto> responseDtolist = new ArrayList<>();
+        if(scheduleMap.containsKey(id)){
+            scheduleMap.remove(id);
+            for(Schedule schedule : scheduleMap.values()){
+                responseDtolist.add(new ScheduleResponseDto(schedule));
+            }
+        }
+        return responseDtolist;
+    }
 
 }
