@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,7 +25,8 @@ public class ScheduleController {
         // requestDto받은 것으로 schedule을 새로 만듬
         Schedule schedule = new Schedule(requestDto);
 
-        // id 부분 처리를 어떻게 해야될지 모르겟다
+        Long maxId = scheduleMap.size() > 0 ? Collections.max(scheduleMap.keySet())+1:1;
+        schedule.setId(maxId);
 
         // scheduleMap에 id와 schedule entity 넣음
         scheduleMap.put(schedule.getId(), schedule);
