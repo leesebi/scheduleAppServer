@@ -14,7 +14,7 @@ import java.util.*;
 @RequestMapping("/api")
 public class ScheduleController {
 
-    private final Map<Long, Schedule> scheduleMap = new HashMap<>();
+    public Map<Long, Schedule> scheduleMap = new HashMap<>();
 
     @PostMapping("/schedule")
     public ScheduleResponseDto createSchedule(@RequestBody ScheduleRequestDto requestDto){
@@ -42,7 +42,7 @@ public class ScheduleController {
     }
 
     @GetMapping("/schedules/{id}")
-    public ScheduleResponseDto readIdSchedule(@PathVariable Long id,@RequestBody ScheduleRequestDto requestDto){
+    public ScheduleResponseDto readIdSchedule(@PathVariable Long id){
         Schedule schedule = null;
         if(scheduleMap.containsKey(id)){
              schedule = scheduleMap.get(id);
@@ -55,7 +55,20 @@ public class ScheduleController {
         return responseDto;
     }
 
+    @PutMapping("/schedule/{id}")
+    public ScheduleResponseDto updateSchedule(@PathVariable Long id, @RequestBody ScheduleRequestDto requestDto){
+        Schedule schedule = new Schedule(requestDto);
+        if(scheduleMap.containsKey(id)){
+            schedule.setId(id);
+            scheduleMap.put(id, schedule);
+            schedule = scheduleMap.get(id);
+        }
 
+        ScheduleResponseDto responseDto = new ScheduleResponseDto(schedule);
+
+        return responseDto;
+
+    }
 
 
 }
