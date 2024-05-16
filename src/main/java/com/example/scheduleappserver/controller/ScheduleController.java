@@ -34,4 +34,9 @@ public class ScheduleController {
         service.findById(id);
     }
 
+    @DeleteMapping("/scheduledelete/{id}")
+    public void deleteSchedule(@PathVariable Long id){
+        service.remove(id);
+    }
+
 }

@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class ScheduleService {
@@ -26,6 +28,17 @@ public class ScheduleService {
         scheduleRepository.findById(id);
     }
 
+    @Transactional
+    public void remove(Long id) {
+        Schedule schedule = findSchedule(id);
+        scheduleRepository.delete(schedule);
+    }
+
+    private Schedule findSchedule(Long id) {
+        return scheduleRepository.findById(id).orElseThrow(() ->
+                new IllegalArgumentException("해당 일정은 존재하지 않습니다.")
+                );
+    }
 
 }
 
