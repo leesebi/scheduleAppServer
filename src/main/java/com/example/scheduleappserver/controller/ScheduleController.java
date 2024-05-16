@@ -48,7 +48,6 @@ public class ScheduleController {
             throw new IllegalStateException("다시한번 확인해주세요");
         }
 
-
         ScheduleResponseDto responseDto = new ScheduleResponseDto(schedule);
         return responseDto;
     }
