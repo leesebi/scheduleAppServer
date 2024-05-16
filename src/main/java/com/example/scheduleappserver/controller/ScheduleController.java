@@ -62,6 +62,8 @@ public class ScheduleController {
             schedule.setId(id);
             scheduleMap.put(id, schedule);
             schedule = scheduleMap.get(id);
+        }else{
+            throw new IllegalStateException("다시한번 확인해주세요");
         }
 
         ScheduleResponseDto responseDto = new ScheduleResponseDto(schedule);
