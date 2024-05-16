@@ -4,15 +4,11 @@ package com.example.scheduleappserver.controller;
 import com.example.scheduleappserver.dto.ScheduleRequestDto;
 import com.example.scheduleappserver.dto.ScheduleResponseDto;
 import com.example.scheduleappserver.entity.Schedule;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api")
@@ -35,5 +31,31 @@ public class ScheduleController {
 
         return responseDto;
     }
+
+    @GetMapping("/schedules")
+    public List<ScheduleResponseDto> readSchedule(){
+        List<ScheduleResponseDto> list = new ArrayList<>();
+        for(Schedule schedule : scheduleMap.values()){
+            list.add(new ScheduleResponseDto(schedule));
+        }
+        return list;
+    }
+
+    @GetMapping("/schedules/{id}")
+    public ScheduleResponseDto readIdSchedule(@PathVariable Long id,@RequestBody ScheduleRequestDto requestDto){
+        Schedule schedule = null;
+        if(scheduleMap.containsKey(id)){
+             schedule = scheduleMap.get(id);
+        }else{
+            throw new IllegalStateException("다시한번 확인해주세요");
+        }
+
+
+        ScheduleResponseDto responseDto = new ScheduleResponseDto(schedule);
+        return responseDto;
+    }
+
+
+
 
 }
