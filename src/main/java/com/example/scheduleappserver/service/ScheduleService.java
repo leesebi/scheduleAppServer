@@ -18,7 +18,7 @@ public class ScheduleService {
 
     @Transactional
     public void findAll() {
-        scheduleRepository.findAllByOrderByModifiedAtDesc();
+        scheduleRepository.findAll();
     }
 
     @Transactional
