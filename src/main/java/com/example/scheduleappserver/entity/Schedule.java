@@ -4,6 +4,7 @@ import com.example.scheduleappserver.dto.ScheduleRequestDto;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Getter
@@ -14,7 +15,7 @@ public class Schedule {
     private String title;
     private String content;
     private String manager;
-//    private Date createdAt;
+    private String createdAt;
 
 
     public Schedule(ScheduleRequestDto requestDto) {
@@ -23,7 +24,8 @@ public class Schedule {
         this.title = requestDto.getTitle();
         this.content = requestDto.getContent();
         this.manager = requestDto.getManager();
+        Date nowDate = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy년 MM월 dd일 HH:mm");
+        this.createdAt = simpleDateFormat.format(nowDate);
     }
-
-
 }

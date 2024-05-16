@@ -4,8 +4,6 @@ package com.example.scheduleappserver.controller;
 import com.example.scheduleappserver.dto.ScheduleRequestDto;
 import com.example.scheduleappserver.dto.ScheduleResponseDto;
 import com.example.scheduleappserver.entity.Schedule;
-import org.springframework.cglib.core.Local;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;

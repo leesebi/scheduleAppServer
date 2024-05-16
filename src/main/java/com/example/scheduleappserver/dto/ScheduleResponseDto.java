@@ -12,7 +12,7 @@ public class ScheduleResponseDto {
     private String title;
     private String content;
     private String manager;
-//    private Date createdAt;
+    private String createdAt;
 
     public ScheduleResponseDto(Schedule schedule) {
         this.id = schedule.getId();
@@ -20,5 +20,6 @@ public class ScheduleResponseDto {
         this.title = schedule.getTitle();
         this.content = schedule.getContent();
         this.manager = schedule.getManager();
+        this.createdAt = schedule.getCreatedAt();
     }
 }
