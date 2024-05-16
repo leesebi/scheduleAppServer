@@ -6,6 +6,7 @@ import com.example.scheduleappserver.dto.ScheduleResponseDto;
 import com.example.scheduleappserver.entity.Schedule;
 import com.example.scheduleappserver.service.ScheduleService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -21,6 +22,16 @@ public class ScheduleController {
     public void createSchedule(@RequestBody ScheduleRequestDto requestDto){
         Schedule schedule = new Schedule(requestDto);
         service.save(schedule);
+    }
+
+    @GetMapping("/schedules")
+    public void readSchedule(){
+        service.findAll();
+    }
+
+    @GetMapping("/schedule/{id}")
+    public void readIdSchedule(@PathVariable Long id){
+        service.findById(id);
     }
 
 }

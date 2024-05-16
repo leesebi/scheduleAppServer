@@ -1,6 +1,5 @@
 package com.example.scheduleappserver.service;
 
-import com.example.scheduleappserver.dto.ScheduleRequestDto;
 import com.example.scheduleappserver.entity.Schedule;
 import com.example.scheduleappserver.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +15,17 @@ public class ScheduleService {
     public void save(Schedule schedule){
         scheduleRepository.save(schedule);
     }
+
+    @Transactional
+    public void findAll() {
+        scheduleRepository.findAllByOrderByModifiedAtDesc();
+    }
+
+    @Transactional
+    public void findById(Long id) {
+        scheduleRepository.findById(id);
+    }
+
 
 }
 
