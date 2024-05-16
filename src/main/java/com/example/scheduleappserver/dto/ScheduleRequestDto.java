@@ -11,5 +11,4 @@ public class ScheduleRequestDto {
     private String title;
     private String content;
     private String manager;
-//    private Date createdAt;
 }
