@@ -6,7 +6,6 @@ import com.example.scheduleappserver.dto.ScheduleResponseDto;
 import com.example.scheduleappserver.entity.Schedule;
 import com.example.scheduleappserver.service.ScheduleService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -25,18 +24,26 @@ public class ScheduleController {
     }
 
     @GetMapping("/schedules")
-    public void readSchedule(){
-        service.findAll();
+    public List<Schedule> readSchedule(){
+        List<Schedule> scheduleList = service.findAll();
+        return scheduleList;
     }
 
-    @GetMapping("/schedule/{id}")
-    public void readIdSchedule(@PathVariable Long id){
-        service.findById(id);
+    @GetMapping("/schedules/{id}")
+    public ScheduleResponseDto readIdSchedule(@PathVariable Long id){
+        return service.findById(id);
     }
 
-    @DeleteMapping("/scheduledelete/{id}")
-    public void deleteSchedule(@PathVariable Long id){
-        service.remove(id);
+
+    @PutMapping("/schedule/{id}")
+    public ScheduleResponseDto updateSchedule(@PathVariable Long id, @RequestBody ScheduleRequestDto requestDto){
+        return service.update(id, requestDto);
+    }
+
+
+    @DeleteMapping("/scheduledelete")
+    public void deleteSchedule(Long id, Integer password){
+        service.deleteFindIdPassword(id, password);
     }
 
 }

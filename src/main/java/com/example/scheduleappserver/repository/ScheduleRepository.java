@@ -8,4 +8,6 @@ import java.util.List;
 
 @Repository
 public interface ScheduleRepository extends JpaRepository <Schedule, Long>{
+    List<Schedule> deleteByIdAndPassword(Long id, Integer password);
+    List<Schedule> findAllByOrderByCreatedAtDesc();
 }
