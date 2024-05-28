@@ -2,17 +2,21 @@ package com.example.scheduleappserver.entity;
 
 import com.example.scheduleappserver.dto.ScheduleRequestDto;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "schedule")
 @Entity
 public class Schedule {
     @Id
@@ -29,6 +33,9 @@ public class Schedule {
     @Column
     private LocalDateTime createdAt;
 
+    @OneToMany
+    @JoinColumn(name = "schedule_id")
+    private List<Comment> comments = new ArrayList<>();
 
     public Schedule(ScheduleRequestDto requestDto) {
         this.id = requestDto.getId();
@@ -38,4 +45,5 @@ public class Schedule {
         this.manager = requestDto.getManager();
         this.createdAt = LocalDateTime.now();
     }
+
 }
