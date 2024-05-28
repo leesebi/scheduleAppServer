@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -26,7 +27,7 @@ public class Schedule {
     @Column
     private String manager;
     @Column
-    private String createdAt;
+    private LocalDateTime createdAt;
 
 
     public Schedule(ScheduleRequestDto requestDto) {
@@ -35,8 +36,6 @@ public class Schedule {
         this.title = requestDto.getTitle();
         this.content = requestDto.getContent();
         this.manager = requestDto.getManager();
-        Date nowDate = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy년 MM월 dd일 HH:mm");
-        this.createdAt = simpleDateFormat.format(nowDate);
+        this.createdAt = LocalDateTime.now();
     }
 }

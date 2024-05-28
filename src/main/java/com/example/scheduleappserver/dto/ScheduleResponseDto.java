@@ -3,6 +3,7 @@ package com.example.scheduleappserver.dto;
 import com.example.scheduleappserver.entity.Schedule;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -12,7 +13,7 @@ public class ScheduleResponseDto {
     private String title;
     private String content;
     private String manager;
-    private String createdAt;
+    private LocalDateTime createdAt;
 
     public ScheduleResponseDto(Schedule schedule) {
         this.id = schedule.getId();

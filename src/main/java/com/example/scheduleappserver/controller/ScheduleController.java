@@ -23,13 +23,13 @@ public class ScheduleController {
         service.save(schedule);
     }
 
-    @GetMapping("/schedules")
+    @GetMapping("/scheduleList")
     public List<Schedule> readSchedule(){
         List<Schedule> scheduleList = service.findAll();
         return scheduleList;
     }
 
-    @GetMapping("/schedules/{id}")
+    @GetMapping("/schedule/{id}")
     public ScheduleResponseDto readIdSchedule(@PathVariable Long id){
         return service.findById(id);
     }
@@ -40,10 +40,9 @@ public class ScheduleController {
         return service.update(id, requestDto);
     }
 
-
-    @DeleteMapping("/scheduledelete")
-    public void deleteSchedule(Long id, Integer password){
-        service.deleteFindIdPassword(id, password);
+    @DeleteMapping("/schedule/{id}")
+    public void deleteSchedule(@PathVariable Long id, @RequestBody ScheduleRequestDto requestDto){
+        service.deleteFindIdPassword(id, requestDto.getPassword());
     }
 
 }
