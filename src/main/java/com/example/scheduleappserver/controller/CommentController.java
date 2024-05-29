@@ -6,6 +6,8 @@ import com.example.scheduleappserver.dto.CommentUpdateRequestDto;
 import com.example.scheduleappserver.service.CommentService;
 import com.example.scheduleappserver.service.ScheduleService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,4 +24,11 @@ public class CommentController {
     public CommentResponseDto updateComment(@PathVariable Long scheduleId, @PathVariable Long commentId, @RequestBody CommentUpdateRequestDto requestDto){
         return service.update(scheduleId, commentId, requestDto);
     }
+
+    @DeleteMapping("/schedule/{scheduleId}/comments/{commentId}")
+    public ResponseEntity<CommentResponseDto> deleteComment(@PathVariable Long scheduleId, @PathVariable Long commentId){
+        service.delete(scheduleId, commentId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }
