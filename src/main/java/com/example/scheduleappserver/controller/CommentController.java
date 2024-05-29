@@ -7,6 +7,7 @@ import com.example.scheduleappserver.service.CommentService;
 import com.example.scheduleappserver.service.ScheduleService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,7 @@ public class CommentController {
     @DeleteMapping("/schedule/{scheduleId}/comments/{commentId}")
     public ResponseEntity<CommentResponseDto> deleteComment(@PathVariable Long scheduleId, @PathVariable Long commentId){
         service.delete(scheduleId, commentId);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.ok().build();
     }
 
 }

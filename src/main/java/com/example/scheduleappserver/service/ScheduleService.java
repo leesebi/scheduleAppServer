@@ -58,7 +58,7 @@ public class ScheduleService {
     // 비밀번호 조회
     public Schedule checkPW(Long id, Integer password) {
         Schedule schedule = findSchedule(id);
-        if (schedule.getPassword() != null && !schedule.getPassword().equals(password)) {
+        if (schedule.getPassword() == null && !schedule.getPassword().equals(password)) {
             throw new IllegalArgumentException();
         }
         return schedule;

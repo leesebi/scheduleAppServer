@@ -33,7 +33,7 @@ public class Schedule {
     @Column
     private LocalDateTime createdAt;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "schedule_id")
     private List<Comment> comments = new ArrayList<>();
 
