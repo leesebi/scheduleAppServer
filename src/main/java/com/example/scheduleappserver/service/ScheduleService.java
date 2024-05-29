@@ -44,6 +44,7 @@ public class ScheduleService {
         schedule.setContent(requestDto.getContent());
         schedule.setTitle(requestDto.getTitle());
 
+        scheduleRepository.save(schedule);
         return new ScheduleResponseDto(schedule);
     }
 
