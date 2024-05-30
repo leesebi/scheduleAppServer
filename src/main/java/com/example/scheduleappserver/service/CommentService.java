@@ -48,7 +48,7 @@ public class CommentService {
     }
 
     // 스케줄과 댓글 찾기 기능
-    public Comment findScheduleAndComment(Long scheduleId, Long commentId){
+    public Comment findScheduleAndComment(Long scheduleId, Long commentId) {
         // schedulId과 일치하는 schedule을 가져온다.
         Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(
                 () -> new IllegalArgumentException("")

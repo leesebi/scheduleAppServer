@@ -36,7 +36,7 @@ public class ScheduleService {
     public ScheduleResponseDto update(Long id, ScheduleRequestDto requestDto) {
         Schedule schedule = findSchedule(id);
 
-        if (schedule.getPassword() != null && !schedule.getPassword().equals(requestDto.getPassword())) {
+        if (schedule.getPassword() == null && !schedule.getPassword().equals(requestDto.getPassword())) {
             throw new IllegalArgumentException();
         }
 
