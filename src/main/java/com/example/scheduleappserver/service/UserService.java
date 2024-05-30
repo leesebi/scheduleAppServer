@@ -12,8 +12,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.net.http.HttpResponse;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service

@@ -4,7 +4,6 @@ import com.example.scheduleappserver.entity.Schedule;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Getter
 public class ScheduleResponseDto {
