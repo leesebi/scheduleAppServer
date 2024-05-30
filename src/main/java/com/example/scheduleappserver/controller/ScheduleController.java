@@ -1,13 +1,11 @@
 package com.example.scheduleappserver.controller;
 
 
-import com.example.scheduleappserver.dto.ScheduleRequestDto;
-import com.example.scheduleappserver.dto.ScheduleResponseDto;
+import com.example.scheduleappserver.dto.schedule.ScheduleRequestDto;
+import com.example.scheduleappserver.dto.schedule.ScheduleResponseDto;
 import com.example.scheduleappserver.entity.Schedule;
 import com.example.scheduleappserver.service.ScheduleService;
-import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;

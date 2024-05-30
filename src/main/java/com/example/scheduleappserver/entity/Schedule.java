@@ -1,6 +1,6 @@
 package com.example.scheduleappserver.entity;
 
-import com.example.scheduleappserver.dto.ScheduleRequestDto;
+import com.example.scheduleappserver.dto.schedule.ScheduleRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

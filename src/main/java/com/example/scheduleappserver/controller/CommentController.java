@@ -1,8 +1,8 @@
 package com.example.scheduleappserver.controller;
 
-import com.example.scheduleappserver.dto.CommentRequestDto;
-import com.example.scheduleappserver.dto.CommentResponseDto;
-import com.example.scheduleappserver.dto.CommentUpdateRequestDto;
+import com.example.scheduleappserver.dto.comment.CommentRequestDto;
+import com.example.scheduleappserver.dto.comment.CommentResponseDto;
+import com.example.scheduleappserver.dto.comment.CommentUpdateRequestDto;
 import com.example.scheduleappserver.service.CommentService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -20,7 +20,8 @@ public class CommentController {
     }
 
     @PutMapping("/schedule/{scheduleId}/comments/{commentId}")
-    public CommentResponseDto updateComment(@PathVariable Long scheduleId, @PathVariable Long commentId, @RequestBody CommentUpdateRequestDto requestDto){
+    public CommentResponseDto updateComment(@PathVariable Long scheduleId, @PathVariable Long commentId,
+                                            @RequestBody CommentUpdateRequestDto requestDto){
         return service.update(scheduleId, commentId, requestDto);
     }
 
@@ -29,5 +30,7 @@ public class CommentController {
         service.delete(scheduleId, commentId);
         return ResponseEntity.ok().build();
     }
+
+
 
 }

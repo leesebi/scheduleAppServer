@@ -1,4 +1,4 @@
-package com.example.scheduleappserver.dto;
+package com.example.scheduleappserver.dto.user;
 
 import jakarta.validation.constraints.Pattern;
 import lombok.Getter;

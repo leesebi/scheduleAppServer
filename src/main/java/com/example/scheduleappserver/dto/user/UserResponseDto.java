@@ -1,4 +1,4 @@
-package com.example.scheduleappserver.dto;
+package com.example.scheduleappserver.dto.user;
 
 import com.example.scheduleappserver.entity.User;
 import com.example.scheduleappserver.entity.UserRoleEnum;

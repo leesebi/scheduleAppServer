@@ -1,9 +1,9 @@
 package com.example.scheduleappserver.service;
 
-import com.example.scheduleappserver.dto.LoginRequestDto;
-import com.example.scheduleappserver.dto.LoginResponseDto;
-import com.example.scheduleappserver.dto.UserRequestDto;
-import com.example.scheduleappserver.dto.UserResponseDto;
+import com.example.scheduleappserver.dto.user.LoginRequestDto;
+import com.example.scheduleappserver.dto.user.LoginResponseDto;
+import com.example.scheduleappserver.dto.user.UserRequestDto;
+import com.example.scheduleappserver.dto.user.UserResponseDto;
 import com.example.scheduleappserver.entity.User;
 import com.example.scheduleappserver.entity.UserRoleEnum;
 import com.example.scheduleappserver.jwt.JwtUtil;

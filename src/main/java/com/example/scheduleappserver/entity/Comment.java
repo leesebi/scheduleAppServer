@@ -1,6 +1,6 @@
 package com.example.scheduleappserver.entity;
 
-import com.example.scheduleappserver.dto.CommentRequestDto;
+import com.example.scheduleappserver.dto.comment.CommentRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

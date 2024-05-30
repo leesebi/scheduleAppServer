@@ -1,8 +1,8 @@
 package com.example.scheduleappserver.service;
 
-import com.example.scheduleappserver.dto.CommentRequestDto;
-import com.example.scheduleappserver.dto.CommentResponseDto;
-import com.example.scheduleappserver.dto.CommentUpdateRequestDto;
+import com.example.scheduleappserver.dto.comment.CommentRequestDto;
+import com.example.scheduleappserver.dto.comment.CommentResponseDto;
+import com.example.scheduleappserver.dto.comment.CommentUpdateRequestDto;
 import com.example.scheduleappserver.entity.Comment;
 import com.example.scheduleappserver.entity.Schedule;
 import com.example.scheduleappserver.repository.CommentRepository;
