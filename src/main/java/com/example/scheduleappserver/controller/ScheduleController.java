@@ -5,13 +5,14 @@ import com.example.scheduleappserver.dto.ScheduleRequestDto;
 import com.example.scheduleappserver.dto.ScheduleResponseDto;
 import com.example.scheduleappserver.entity.Schedule;
 import com.example.scheduleappserver.service.ScheduleService;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
 @RequestMapping("/api")
-@RequiredArgsConstructor
+@AllArgsConstructor
 @RestController
 public class ScheduleController {
 

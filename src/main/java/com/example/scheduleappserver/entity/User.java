@@ -1,22 +1,36 @@
 package com.example.scheduleappserver.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.scheduleappserver.dto.UserRequestDto;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+@Getter
+@NoArgsConstructor
 @Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
+    @Column
     private String nickname;
+    @Column(unique = true)
     private String username;
+    @Column
     private String password;
-    private String role;
+    @Column
+    private LocalDateTime createdAt;
 
-
+    @Enumerated(value=EnumType.STRING)
+    private UserRoleEnum role;
+    public User(UserRequestDto request, UserRoleEnum role) {
+        this.nickname = request.getNickname();
+        this.username = request.getUsername();
+        this.password = request.getPassword();
+        this.role = role;
+        this.createdAt = LocalDateTime.now();
+    }
 }
