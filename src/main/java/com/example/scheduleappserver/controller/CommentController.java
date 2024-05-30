@@ -5,6 +5,7 @@ import com.example.scheduleappserver.dto.CommentResponseDto;
 import com.example.scheduleappserver.dto.CommentUpdateRequestDto;
 import com.example.scheduleappserver.service.CommentService;
 import com.example.scheduleappserver.service.ScheduleService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 public class CommentController {
     private final CommentService service;
     @PostMapping("/schedule/{scheduleId}/comments")
-    public void createComment(@PathVariable Long scheduleId, @RequestBody CommentRequestDto requestDto){
+    public void createComment(@PathVariable Long scheduleId,@Valid @RequestBody CommentRequestDto requestDto){
         service.save(scheduleId, requestDto);
     }
 
