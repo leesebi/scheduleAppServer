@@ -108,5 +108,24 @@ public class JwtUtil {
         return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
     }
 
-    // 헤더에 넣는 토큰을 넣는 메서드
+    // HttpServletRequest에서 Cookie value : JWT 가져오기
+    public String getTokenFromRequest(HttpServletRequest req){
+        Cookie[] cookies = req.getCookies();
+
+        if(cookies != null){
+            for(Cookie cookie : cookies){
+                if(cookie.getName().equals(AUTHORIZATION_HEADER)){
+                    try{
+                        return URLDecoder.decode(cookie.getValue(), "UTF-8");
+                    }catch (UnsupportedEncodingException e){
+                        return null;
+                    }
+
+                }
+            }
+        }
+        return  null;
+    }
+
+
 }
