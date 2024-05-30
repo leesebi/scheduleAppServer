@@ -20,7 +20,7 @@ public class CommentService {
 
     // 저장
     public void save(Long scheduleId, CommentRequestDto requestDto) {
-        Comment comment = new Comment(requestDto); // 서비스에서 해야됨
+        Comment comment = new Comment(requestDto);
         Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(() ->
                 new IllegalArgumentException("")
         );
@@ -30,7 +30,7 @@ public class CommentService {
         scheduleRepository.save(schedule);
     }
 
-    // 삭제
+    // 수정
     public CommentResponseDto update(Long scheduleId, Long commentId, CommentUpdateRequestDto requestDto) {
         Comment request = findScheduleAndComment(scheduleId, commentId);
 
@@ -42,6 +42,7 @@ public class CommentService {
         return new CommentResponseDto(request);
     }
 
+    // 삭제
     public void delete(Long scheduleId, Long commentId) {
         Comment request = findScheduleAndComment(scheduleId, commentId);
         commentRepository.delete(request);
