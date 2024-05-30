@@ -108,4 +108,5 @@ public class JwtUtil {
         return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
     }
 
+    // 헤더에 넣는 토큰을 넣는 메서드
 }
