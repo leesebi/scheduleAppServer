@@ -37,7 +37,7 @@ public class ScheduleService {
         Schedule schedule = findSchedule(id);
 
         if (schedule.getPassword() == null && !schedule.getPassword().equals(requestDto.getPassword())) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("비밀번호를 확인해주세요");
         }
 
         schedule.setManager(requestDto.getManager());
@@ -59,7 +59,7 @@ public class ScheduleService {
     public Schedule checkPW(Long id, Integer password) {
         Schedule schedule = findSchedule(id);
         if (schedule.getPassword() == null && !schedule.getPassword().equals(password)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("비밀번호를 확인해 주세요.");
         }
         return schedule;
     }

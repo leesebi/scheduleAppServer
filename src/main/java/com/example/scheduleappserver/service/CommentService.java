@@ -22,7 +22,7 @@ public class CommentService {
     public void save(Long scheduleId, CommentRequestDto requestDto) {
         Comment comment = new Comment(requestDto);
         Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(() ->
-                new IllegalArgumentException("")
+                new IllegalArgumentException("일정 Id를 다시 확인해주세요.")
         );
         schedule.getComments().add(comment);
 
@@ -52,7 +52,7 @@ public class CommentService {
     public Comment findScheduleAndComment(Long scheduleId, Long commentId) {
         // schedulId과 일치하는 schedule을 가져온다.
         Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(
-                () -> new IllegalArgumentException("")
+                () -> new IllegalArgumentException("일정 Id를 다시 확인해주세요.")
         );
 
         // schedule에 있는 comment들을 list로 받아온다.
