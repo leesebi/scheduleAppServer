@@ -6,12 +6,13 @@ import com.example.scheduleappserver.dto.comment.CommentUpdateRequestDto;
 import com.example.scheduleappserver.service.CommentService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CommentController {
     private final CommentService service;
     @PostMapping("/schedule/{scheduleId}/comments")

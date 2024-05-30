@@ -7,13 +7,13 @@ import com.example.scheduleappserver.entity.Comment;
 import com.example.scheduleappserver.entity.Schedule;
 import com.example.scheduleappserver.repository.CommentRepository;
 import com.example.scheduleappserver.repository.ScheduleRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CommentService {
     private final CommentRepository commentRepository;
     private final ScheduleRepository scheduleRepository;

@@ -10,12 +10,13 @@ import com.example.scheduleappserver.jwt.JwtUtil;
 import com.example.scheduleappserver.repository.UserRepository;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository repository;
