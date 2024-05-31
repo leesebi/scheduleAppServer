@@ -19,7 +19,7 @@ public class Comment {
     private Long id;
 
     @Column
-    private String userId;
+    private String userName;
 
     @Column
     private String content;
@@ -33,7 +33,7 @@ public class Comment {
 
     public Comment(CommentRequestDto requestDto) {
         this.content = requestDto.getContent();
-        this.userId = requestDto.getUserId();
+        this.userName = requestDto.getUserName();
         this.createdAt = LocalDateTime.now();
     }
     public void commentUser(User user){

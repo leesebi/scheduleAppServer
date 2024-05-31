@@ -6,8 +6,8 @@ import lombok.Getter;
 
 @Getter
 public class CommentRequestDto {
-    @JsonProperty("user_id")
-    private String userId;
+    @JsonProperty("user_name")
+    private String userName;
     @NotBlank
     private String content;
 }
