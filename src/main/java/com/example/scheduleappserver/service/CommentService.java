@@ -5,34 +5,50 @@ import com.example.scheduleappserver.dto.comment.CommentResponseDto;
 import com.example.scheduleappserver.dto.comment.CommentUpdateRequestDto;
 import com.example.scheduleappserver.entity.Comment;
 import com.example.scheduleappserver.entity.Schedule;
+import com.example.scheduleappserver.entity.User;
 import com.example.scheduleappserver.repository.CommentRepository;
 import com.example.scheduleappserver.repository.ScheduleRepository;
+import com.example.scheduleappserver.repository.UserRepository;
+import jakarta.servlet.ServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
 public class CommentService {
     private final CommentRepository commentRepository;
     private final ScheduleRepository scheduleRepository;
+    private final UserRepository userRepository;
 
     // 저장
-    public void save(Long scheduleId, CommentRequestDto requestDto) {
+    @Transactional
+    public void save(Long scheduleId, CommentRequestDto requestDto, User user) {
         Comment comment = new Comment(requestDto);
         Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(() ->
                 new IllegalArgumentException("일정 Id를 다시 확인해주세요.")
         );
+
         schedule.getComments().add(comment);
+        user.getComments().add(comment);
+        comment.commentUser(user);
 
         commentRepository.save(comment);
         scheduleRepository.save(schedule);
+        userRepository.save(user);
+        System.out.println("save" + user.getId());
     }
 
     // 수정
-    public CommentResponseDto update(Long scheduleId, Long commentId, CommentUpdateRequestDto requestDto) {
+    public CommentResponseDto update(Long scheduleId, Long commentId, CommentUpdateRequestDto requestDto, User user) {
         Comment request = findScheduleAndComment(scheduleId, commentId);
+
+        if(!Objects.equals(request.getUser().getId(), user.getId())){
+            throw new IllegalArgumentException("수정할 수 없는 댓글입니다.");
+        }
 
         // 객체에 set을 이용해 값을 수정
         request.setContent(requestDto.getContent());
@@ -43,9 +59,13 @@ public class CommentService {
     }
 
     // 삭제
-    public void delete(Long scheduleId, Long commentId) {
-        Comment request = findScheduleAndComment(scheduleId, commentId);
-        commentRepository.delete(request);
+    public void delete(Long scheduleId, Long commentId, User user) {
+        Comment comment = findScheduleAndComment(scheduleId, commentId);
+        if(!Objects.equals(user.getId(), comment.getUser().getId())){
+            throw new IllegalArgumentException("삭제할 수 없는 댓글입니다.");
+        }
+
+        commentRepository.delete(comment);
     }
 
     // 스케줄과 댓글 찾기 기능

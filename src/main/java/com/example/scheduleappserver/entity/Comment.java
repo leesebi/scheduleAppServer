@@ -27,10 +27,16 @@ public class Comment {
     @Column
     private LocalDateTime createdAt;
 
+    @ManyToOne
+    @JoinColumn(name="user_fk")
+    private User user;
 
     public Comment(CommentRequestDto requestDto) {
         this.content = requestDto.getContent();
         this.userId = requestDto.getUserId();
         this.createdAt = LocalDateTime.now();
+    }
+    public void commentUser(User user){
+        this.user = user;
     }
 }
