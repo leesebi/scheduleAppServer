@@ -8,11 +8,11 @@ import java.time.LocalDateTime;
 
 @Getter
 public class UserResponseDto {
-    private String nickname;
-    private String username;
-    private String password;
-    private UserRoleEnum role;
-    private LocalDateTime createdAt;
+    private final String nickname;
+    private final String username;
+    private final String password;
+    private final UserRoleEnum role;
+    private final LocalDateTime createdAt;
 
     public UserResponseDto(User user){
         this.nickname = user.getNickname();
