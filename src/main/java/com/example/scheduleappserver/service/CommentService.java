@@ -9,7 +9,6 @@ import com.example.scheduleappserver.entity.User;
 import com.example.scheduleappserver.repository.CommentRepository;
 import com.example.scheduleappserver.repository.ScheduleRepository;
 import com.example.scheduleappserver.repository.UserRepository;
-import jakarta.servlet.ServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

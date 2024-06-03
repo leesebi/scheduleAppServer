@@ -5,11 +5,10 @@ import com.example.scheduleappserver.dto.schedule.ScheduleRequestDto;
 import com.example.scheduleappserver.dto.schedule.ScheduleResponseDto;
 import com.example.scheduleappserver.entity.Schedule;
 import com.example.scheduleappserver.service.ScheduleService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.List;
 
 @RequestMapping("/api")
 @RequiredArgsConstructor
