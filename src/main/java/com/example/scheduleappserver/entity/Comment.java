@@ -36,6 +36,8 @@ public class Comment {
         this.userName = requestDto.getUserName();
         this.createdAt = LocalDateTime.now();
     }
+
+
     public void commentUser(User user){
         this.user = user;
     }

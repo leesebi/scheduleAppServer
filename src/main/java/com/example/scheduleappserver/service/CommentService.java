@@ -26,7 +26,7 @@ public class CommentService {
 
     // 저장
     @Transactional
-    public void save(Long scheduleId, CommentRequestDto requestDto, User user) {
+    public Comment save(Long scheduleId, CommentRequestDto requestDto, User user) {
         Comment comment = new Comment(requestDto);
         Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow(() ->
                 new IllegalArgumentException("일정 Id를 다시 확인해주세요.")
@@ -40,6 +40,8 @@ public class CommentService {
         scheduleRepository.save(schedule);
         userRepository.save(user);
         System.out.println("save" + user.getId());
+
+        return commentRepository.save(comment);
     }
 
     // 수정

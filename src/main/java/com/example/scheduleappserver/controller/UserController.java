@@ -1,5 +1,7 @@
 package com.example.scheduleappserver.controller;
 
+import com.example.scheduleappserver.dto.CommonResponse;
+import com.example.scheduleappserver.dto.comment.CommentResponseDto;
 import com.example.scheduleappserver.dto.user.LoginRequestDto;
 import com.example.scheduleappserver.dto.user.LoginResponseDto;
 import com.example.scheduleappserver.dto.user.UserRequestDto;
@@ -20,15 +22,23 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/signup")
-    public ResponseEntity<UserResponseDto> signup(@Valid @RequestBody UserRequestDto request){
+    public ResponseEntity<CommonResponse<UserResponseDto>> signup(@Valid @RequestBody UserRequestDto request){
         UserResponseDto responseDto = userService.signup(request);
-        return new ResponseEntity<>(responseDto, HttpStatus.OK);
+        return ResponseEntity.ok().body(CommonResponse.<UserResponseDto> builder()
+                .statusCode(HttpStatus.OK.value())
+                .msg("회원가입이 완료되었습니다")
+                .data(responseDto)
+                .build());
     }
 
     @GetMapping("/login")
-    public ResponseEntity<LoginResponseDto> login(@Valid @RequestBody LoginRequestDto request, HttpServletResponse res){
+    public ResponseEntity<CommonResponse<LoginResponseDto>> login(@Valid @RequestBody LoginRequestDto request, HttpServletResponse res){
         LoginResponseDto responseDto = userService.login(request, res);
-        return new ResponseEntity<>(responseDto, HttpStatus.OK);
+        return ResponseEntity.ok().body(CommonResponse.<LoginResponseDto> builder()
+                .statusCode(HttpStatus.OK.value())
+                .msg("로그인이 완료되었습니다")
+                .data(responseDto)
+                .build());
     }
 
 }
