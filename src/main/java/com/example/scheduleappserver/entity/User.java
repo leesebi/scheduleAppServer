@@ -27,13 +27,13 @@ public class User {
     private LocalDateTime createdAt;
 
     @Enumerated(value=EnumType.STRING)
-    private UserRoleEnum role;
+    private UserRole role;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
 //    @JoinColumn(name = "user_id_fK")
     private List<Comment> comments = new ArrayList<>();
 
-    public User(UserRequestDto request, UserRoleEnum role) {
+    public User(UserRequestDto request, UserRole role) {
         this.nickname = request.getNickname();
         this.username = request.getUsername();
         this.password = request.getPassword();

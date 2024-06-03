@@ -1,21 +1,14 @@
 package com.example.scheduleappserver.auth;
 
-import com.example.scheduleappserver.entity.UserRoleEnum;
+import com.example.scheduleappserver.entity.UserRole;
 import com.example.scheduleappserver.jwt.JwtUtil;
 import io.jsonwebtoken.Claims;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,7 +22,7 @@ public class AuthController {
     @GetMapping("/create-jwt")
     public String createJwt(HttpServletResponse res) {
         // Jwt 생성
-        String token = jwtUtil.createToken("Robbie", UserRoleEnum.USER);
+        String token = jwtUtil.createToken("Robbie", UserRole.USER);
 
         // Jwt 쿠키 저장
         jwtUtil.addJwtToCookie(token, res);

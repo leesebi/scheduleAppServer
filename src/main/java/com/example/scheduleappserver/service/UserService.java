@@ -5,11 +5,10 @@ import com.example.scheduleappserver.dto.user.LoginResponseDto;
 import com.example.scheduleappserver.dto.user.UserRequestDto;
 import com.example.scheduleappserver.dto.user.UserResponseDto;
 import com.example.scheduleappserver.entity.User;
-import com.example.scheduleappserver.entity.UserRoleEnum;
+import com.example.scheduleappserver.entity.UserRole;
 import com.example.scheduleappserver.jwt.JwtUtil;
 import com.example.scheduleappserver.repository.UserRepository;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -32,12 +31,12 @@ public class UserService {
         }
 
         //사용자 role 확인 -> admin이면 token이 맞는지 비교 아니면 user
-        UserRoleEnum role = UserRoleEnum.USER;
+        UserRole role = UserRole.USER;
         if(request.isAdmin()){
             if(!request.getAdminToken().equals(ADMIN_TOKEN)){
                 throw new IllegalArgumentException("관리자 암호가 다릅니다.");
             }
-            role = UserRoleEnum.ADMIN;
+            role = UserRole.ADMIN;
         }
 
         // 사용자 저장
