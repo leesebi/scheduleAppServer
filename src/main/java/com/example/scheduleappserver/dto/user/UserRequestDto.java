@@ -1,9 +1,11 @@
 package com.example.scheduleappserver.dto.user;
 
 import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
+@AllArgsConstructor
 public class UserRequestDto {
     private String nickname;
     @Pattern(regexp = "[a-z0-9]{4,10}")
