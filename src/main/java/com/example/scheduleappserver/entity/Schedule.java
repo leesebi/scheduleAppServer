@@ -2,9 +2,7 @@ package com.example.scheduleappserver.entity;
 
 import com.example.scheduleappserver.dto.schedule.ScheduleRequestDto;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -13,6 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "schedule")
 @Entity
 public class Schedule {

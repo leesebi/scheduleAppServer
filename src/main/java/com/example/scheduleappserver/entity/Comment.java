@@ -38,6 +38,7 @@ public class Comment {
     }
 
 
+
     public void commentUser(User user){
         this.user = user;
     }
